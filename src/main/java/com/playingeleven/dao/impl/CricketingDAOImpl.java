@@ -14,14 +14,35 @@ import com.playingeleven.dao.dto.Experience;
 public class CricketingDAOImpl implements CricketingDAO {
 
 	public void addCricketingDetails(int jerseyNo,String batting, String bowling,
-			String bowlingSpeed) throws Exception {
-		Connection con = DbConnection.getConnection();
-		String sql = "insert into cricketing(cric_no,jersey_no,batting,bowling,bowling_speed)values(cric_no_sq.nextval,'" + jerseyNo + "','" + batting + "','" + bowling + "','"+ bowlingSpeed + "')";
-		//System.out.println(sql);
-		Statement stmt = con.createStatement();
-		int row = stmt.executeUpdate(sql);
-		//System.out.println(row);
-		con.close();
+			String bowlingSpeed) throws Exception 
+	{
+		Connection con=null;
+		Statement stmt=null;
+		try
+		{
+			con = DbConnection.getConnection();
+			String sql = "insert into cricketing(cric_no,jersey_no,batting,bowling,bowling_speed)values(cric_no_sq.nextval,'" + jerseyNo + "','" + batting + "','" + bowling + "','"+ bowlingSpeed + "')";
+			//System.out.println(sql);
+			stmt = con.createStatement();
+			int row = stmt.executeUpdate(sql);
+			//System.out.println(row);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(stmt!=null)
+			{
+				stmt.close();
+			}
+			if(con!=null)
+			{
+				con.close();
+			}
+		}
+		
 
 	}
 
