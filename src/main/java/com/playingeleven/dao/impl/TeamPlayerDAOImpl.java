@@ -52,10 +52,10 @@ public class TeamPlayerDAOImpl {
 				String playerType=rs.getString("player_Type");
 				int soldPrice = rs.getInt("sold_price");
 				com.playingeleven.dao.dto.TeamPlayerPlayers bo = new TeamPlayerPlayers();
-				bo.playerFullName = playerFullName;
-				bo.roleName = roleName;
-				bo.playerType=playerType;
-				bo.soldPrice= soldPrice;
+				bo.setPlayerFullName(playerFullName);
+				bo.setRoleName(roleName);
+				bo.setPlayerType(playerType);
+				bo.setSoldPrice(soldPrice);
 				TeamPlayerPlayers.add(bo);
 			}
 

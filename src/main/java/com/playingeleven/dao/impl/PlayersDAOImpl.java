@@ -32,7 +32,7 @@ public class PlayersDAOImpl implements PlayersDAO {
 			pst.setString(3, player.getNickName());
 			pst.setString(4, player.getRoleName());
 			//pst.setInt(5,player.getActive());
-			int rows = pst.executeUpdate();
+			pst.executeUpdate();
 			//System.out.println(rows);
 		}
 		catch(Exception e)
@@ -65,7 +65,7 @@ public class PlayersDAOImpl implements PlayersDAO {
 			//System.out.println(sql);
 			pst = con.prepareStatement(sql);
 			pst.setDate(1, Date.valueOf(dateOfBirth)); 
-			int rows = pst.executeUpdate();
+			pst.executeUpdate();
 			//System.out.println(rows)
 			
 		}
@@ -130,8 +130,8 @@ public class PlayersDAOImpl implements PlayersDAO {
 				String playerFullName = rs.getString("player_fullname");
 				int matches = rs.getInt("matches");
                 com.playingeleven.dao.dto.Experience e = new Experience();
-				e.playerFullName = playerFullName;
-				e.matches = matches;
+				e.setPlayerFullName(playerFullName);
+				e.setMatches(matches);
 				Experience.add(e);
 			}
 }

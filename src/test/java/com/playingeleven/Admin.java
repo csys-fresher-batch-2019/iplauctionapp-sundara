@@ -273,8 +273,8 @@ System.out.println("Enter username : ");
 		ArrayList<Batting> BattingAverage = impl.bestBattingAverage();
 		for (Batting batting : BattingAverage) {
 			System.out.println();
-			System.out.println(batting.playerFullName + "," + batting.roleName + "," + batting.batting + ","
-					+ batting.battingAverage + "," + batting.rank);
+			System.out.println(batting.getPlayerFullName() + "," + batting.getRoleName() + "," + batting.getBatting() + ","
+					+ batting.getBattingAverage() + "," + batting.getRank());
 		}
 
 	}
@@ -286,8 +286,8 @@ System.out.println("Enter username : ");
 		ArrayList<Bowling> BowlingAverage = impl.bestBowlingAverage();
 		for (Bowling bowling : BowlingAverage) {
 			System.out.println();
-			System.out.println(bowling.playerFullName + "," + bowling.roleName + "," + bowling.bowling + ","
-					+ bowling.bowlingAverage + "," + bowling.rank);
+			System.out.println(bowling.getPlayerFullName() + "," + bowling.getRoleName() + "," + bowling.getBowling() + ","
+					+ bowling.getBowlingAverage() + "," + bowling.getRank());
 		}
 	}
 
@@ -313,7 +313,7 @@ System.out.println("Enter username : ");
 		ArrayList<Experience> ExperiencePlayers = impl.listOfExperiencedPlayers();
 		for (Experience experience : ExperiencePlayers) {
 			System.out.println();
-			System.out.println(experience.playerFullName + "-" + experience.matches);
+			System.out.println(experience.getPlayerFullName() + "-" + experience.getMatches());
 		}
 	}
 		public static void insertCountry() throws Exception {
@@ -447,7 +447,7 @@ System.out.println("Enter username : ");
 			ArrayList<TeamPlayerPlayers> TeamPlayers = impl.viewTeamPlayer(teamName);
 			for (TeamPlayerPlayers e : TeamPlayers) {
 				System.out.println();
-				System.out.println(e.playerFullName + " " + e.roleName + " " + e.playerType + " " +e.soldPrice);
+				System.out.println(e.getPlayerFullName() + " " + e.getRoleName() + " " + e.getPlayerType() + " " +e.getSoldPrice());
 			}
 		}
 }

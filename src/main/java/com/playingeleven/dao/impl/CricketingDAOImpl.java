@@ -92,11 +92,11 @@ public class CricketingDAOImpl implements CricketingDAO {
 				int battingAverage = rs.getInt("batting_average");
 				int rank = rs.getInt("rank");
 	            com.playingeleven.dao.dto.Batting b = new Batting();
-				b.playerFullName = playerFullName;
-				b.roleName = roleName;
-				b.batting = batting;
-				b.battingAverage = battingAverage;
-				b.rank = rank;
+				b.setPlayerFullName(playerFullName);
+				b.setRoleName(roleName);
+				b.setBatting(batting);
+				b.setBattingAverage(battingAverage);
+				b.setRank(rank);
 				Batting.add(b);
 				return Batting;
 			}
@@ -124,11 +124,11 @@ public class CricketingDAOImpl implements CricketingDAO {
 				int bowlingAverage = rs.getInt("bowling_average");
 				int rank = rs.getInt("rank");
 				com.playingeleven.dao.dto.Bowling bo = new Bowling();
-				bo.playerFullName = playerFullName;
-				bo.roleName = roleName;
-				bo.bowling = bowling;
-				bo.bowlingAverage = bowlingAverage;
-				bo.rank = rank;
+				bo.setPlayerFullName(playerFullName);
+				bo.setRoleName(roleName);
+				bo.setBowling(bowling);
+				bo.setBowlingAverage(bowlingAverage);
+				bo.setRank(rank);
 				Bowling.add(bo);
 			}
 		}
