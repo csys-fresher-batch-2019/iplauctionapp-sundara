@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -88,16 +89,16 @@ public class PlayersDAOImpl implements PlayersDAO {
 	}
 
 	public List<Players> listRoleOfPlayers(String roleName) throws Exception {
-		// TODO Auto-generated method stub
-		Connection con=null;
-		Statement stmt=null;
+	
 		List<Players> list = new ArrayList<Players>();
+		String sql = "select player_id,player_fullname from players where lower(role_name)=lower('" + roleName + "') and active =1";
 		try
-		{
-			con = DbConnection.getConnection();
-			String sql = "select player_id,player_fullname from players where lower(role_name)=lower('" + roleName + "') and active =1";
-			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+		(
+			Connection con = DbConnection.getConnection();
+			Statement stmt = con.createStatement();
+			
+			
+			ResultSet rs = stmt.executeQuery(sql);){
 			while (rs.next()) {
 				Players p = new Players();
 				p.setPlayerId(rs.getInt("player_id"));
@@ -106,69 +107,37 @@ public class PlayersDAOImpl implements PlayersDAO {
 			
 		}
 		}
-			catch(Exception e)
+			catch(SQLException e)
 			{
 				e.printStackTrace();
 			}
-		finally
-		{
-			if(stmt!=null)
-			{
-				stmt.close();
-			}
-			if(con!=null)
-			{
-				con.close();
-			}
-		}
-		
-		
-		
 		return list;
 		
 	}
 
 	public ArrayList<Experience> listOfExperiencedPlayers() throws Exception {
 		// TODO Auto-generated method stub
-		Connection con=null;
-		Statement stmt=null;
+	
 		ArrayList<Experience> Experience = new ArrayList<Experience>();
-		try
-		{
-			con = DbConnection.getConnection();
+	
+			
 			String sql = "select players.player_fullname as player_fullname,career.matches as matches from players inner join career on player_id=career_no where active=1 order by matches desc";
-			//System.out.println(sql);
-			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			try(Connection con = DbConnection.getConnection();
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);){
 			
 			while (rs.next()) {
 				String playerFullName = rs.getString("player_fullname");
 				int matches = rs.getInt("matches");
-				// System.out.println(player + "," + player1);
-				// dat=dat + "\n"+player+","+player1;
-
-				com.playingeleven.dao.dto.Experience e = new Experience();
+                com.playingeleven.dao.dto.Experience e = new Experience();
 				e.playerFullName = playerFullName;
 				e.matches = matches;
 				Experience.add(e);
 			}
-
-			
-		}
-		catch(Exception e)
+}
+		catch(SQLException e)
 		{
 			e.printStackTrace();
-		}
-		finally
-		{
-			if(stmt!=null)
-			{
-				stmt.close();
-			}
-			if(con!=null)
-			{
-				con.close();
-			}
 		}
 				
        return Experience;
