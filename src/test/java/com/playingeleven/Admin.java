@@ -31,7 +31,107 @@ import com.playingeleven.model.TeamPlayer;
 public class Admin {
 
 	public static void main(String[] args) throws Exception {
-	}	public static void testInsert() throws Exception {
+		int n;
+		Scanner sc = new Scanner(System.in);
+System.out.println("Enter username : ");
+		String username=sc.next();
+		System.out.println("Enter password");
+		String password=sc.next();
+
+		if (username.equals("admin") && password.equals("admin")) {
+			System.out.println("you are logged in to Admin");
+			do {
+				System.out.print("\nTo choose your choice\npress 1 add to player details\npress 2 to remove player details\npress 3 to Add cricketing details\npress 4 to Add career details\npress 5 to Update career details\npress 6 to add country\npress 7 to add team\npress 8 to add teamplayer\npress 9 to start bidding\npress 10 to view players in the team\npress any other to exit");
+				System.out.println("\nEnter your choice no:");
+				n = sc.nextInt();
+				switch (n) {
+				case 1:
+					System.out.println("Add player details");
+					testInsert();
+					break;
+				case 2:
+					System.out.println("remove player details");
+					testDelete();
+					break;
+				case 3:
+					System.out.println("Add cricketing details");
+					testCricketing();
+					break;
+				case 4:
+					System.out.println("Add career details");
+					testCareer();
+					break;
+				case 5:
+					System.out.println("Update career details");
+					updateCareer();
+					break;
+				case 6:
+				    System.out.println("Add country details");
+				    insertCountry();
+				    break;
+				case 7:
+					System.out.println("Add team details");
+					insertTeam();
+					break;
+				case 8:
+					System.out.println("Add team player details");
+					insertTeamPlayer();
+					break;
+				case 9:
+					System.out.println("Start bidding");
+					bidPlayer();
+					break;
+				case 10:
+					System.out.println("to view players in a team");
+					playerTeam();
+					break;
+					default:
+					System.out.println("Invalid choice");
+					break;
+				}
+			} while (n <= 10);
+		} else {
+			System.out.println("you are logged in to team login");
+			do {
+
+				System.out.println(
+						"\nTo choose your choice\npress 1 to show batting average and rank \npress 2 to show bowling average and rank\npress 3 To find player by role\npress 4 To display player on experience wise\n press any other to exit");
+
+				sc = new Scanner(System.in);
+				
+				System.out.println("\nEnter your choice no:");
+				
+				String choice = sc.next();
+				System.out.println(choice);
+				n = Integer.parseInt(choice);
+				switch (n) {
+				case 1:
+					System.out.println("to show batting average and rank");
+					testBatAvg();
+					break;
+				case 2:
+					System.out.println("to show bowling average and rank");
+					testBowAvg();
+					break;
+				case 3:
+					System.out.println("To find player by role");
+					findRole();
+					break;
+				case 4:
+					System.out.println("To display player on experience wise");
+					testExperienced();
+					break;
+				default:
+					System.out.println("Invalid choice");
+					break;
+				}
+			} while (n <= 4);
+		}
+		sc.close();
+	}
+
+
+		public static void testInsert() throws Exception {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter player fullname");
 		String playerFullName = sc.nextLine();

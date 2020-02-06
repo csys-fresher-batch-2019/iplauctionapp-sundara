@@ -1,13 +1,14 @@
 package com.playingeleven.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Date;
+
 import com.playingeleven.DbConnection;
 import com.playingeleven.dao.PlayersDAO;
 import com.playingeleven.dao.dto.Experience;
@@ -95,7 +96,6 @@ public class PlayersDAOImpl implements PlayersDAO {
 		{
 			con = DbConnection.getConnection();
 			String sql = "select player_id,player_fullname from players where lower(role_name)=lower('" + roleName + "') and active =1";
-			//System.out.println(sql);
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
