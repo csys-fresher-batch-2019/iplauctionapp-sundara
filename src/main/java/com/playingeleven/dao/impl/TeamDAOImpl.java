@@ -22,7 +22,7 @@ public class TeamDAOImpl {
 			
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 		finally
 		{

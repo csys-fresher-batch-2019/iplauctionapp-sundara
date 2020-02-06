@@ -6,7 +6,10 @@ import java.sql.Statement;
 import com.playingeleven.DbConnection;
 import com.playingeleven.dao.CareerDAO;
 
+import logger.Logger;
+
 public class CareerDAOImpl implements CareerDAO {
+	private static final Logger log=Logger.getInstance(); 
 
 	public void addCareerDetails(int matches, int innings, int notOuts, int runsScored, int ballsBowled,
 			int runsConceded, int wickets, int catches, int stumpings) throws Exception {
@@ -25,7 +28,8 @@ public class CareerDAOImpl implements CareerDAO {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			
+			log.error(e);
 		}
 		finally
 		{
@@ -59,7 +63,7 @@ public class CareerDAOImpl implements CareerDAO {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 		finally
 		{
@@ -98,7 +102,7 @@ public class CareerDAOImpl implements CareerDAO {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 		finally
 		{

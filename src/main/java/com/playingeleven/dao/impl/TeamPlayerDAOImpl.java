@@ -28,7 +28,7 @@ public class TeamPlayerDAOImpl {
 		
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 		finally
 		{
@@ -67,7 +67,7 @@ public class TeamPlayerDAOImpl {
 				
 		catch(SQLException e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 		
 		return TeamPlayerPlayers;

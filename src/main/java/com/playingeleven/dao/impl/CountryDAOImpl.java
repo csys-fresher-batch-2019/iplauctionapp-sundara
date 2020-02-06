@@ -21,7 +21,7 @@ public class CountryDAOImpl {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 		finally
 		{

@@ -32,7 +32,7 @@ public class CricketingDAOImpl implements CricketingDAO {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 		finally
 		{
@@ -63,7 +63,7 @@ public class CricketingDAOImpl implements CricketingDAO {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 		finally
 		{
@@ -106,7 +106,7 @@ public class CricketingDAOImpl implements CricketingDAO {
 			
 		}
 	catch (SQLException e) {
-			    e.printStackTrace();
+		log.error(e);
 	}
 			return Batting;
 			
@@ -136,7 +136,7 @@ public class CricketingDAOImpl implements CricketingDAO {
 			}
 		}
 		catch (SQLException e) {
-		    e.printStackTrace();
+			log.error(e);
 		}
 		
 		return Bowling;

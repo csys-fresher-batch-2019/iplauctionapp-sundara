@@ -40,7 +40,7 @@ public class PlayersDAOImpl implements PlayersDAO {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 	finally
 	{
@@ -74,7 +74,7 @@ public class PlayersDAOImpl implements PlayersDAO {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 		finally
 		{
@@ -112,7 +112,7 @@ public class PlayersDAOImpl implements PlayersDAO {
 		}
 			catch(SQLException e)
 			{
-				e.printStackTrace();
+				log.error(e);
 			}
 		return list;
 		
@@ -140,7 +140,7 @@ public class PlayersDAOImpl implements PlayersDAO {
 }
 		catch(SQLException e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 				
        return Experience;
