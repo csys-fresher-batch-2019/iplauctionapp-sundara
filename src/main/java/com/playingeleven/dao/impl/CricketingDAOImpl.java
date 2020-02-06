@@ -11,7 +11,10 @@ import com.playingeleven.dao.CricketingDAO;
 import com.playingeleven.dao.dto.Batting;
 import com.playingeleven.dao.dto.Bowling;
 
+import logger.Logger;
+
 public class CricketingDAOImpl implements CricketingDAO {
+	private static final Logger log=Logger.getInstance(); 
 
 	public void addCricketingDetails(int jerseyNo,String batting, String bowling,
 			String bowlingSpeed) throws Exception 

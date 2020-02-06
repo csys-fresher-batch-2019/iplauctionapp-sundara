@@ -5,7 +5,10 @@ import java.sql.Statement;
 
 import com.playingeleven.DbConnection;
 
+import logger.Logger;
+
 public class CountryDAOImpl {
+	private static final Logger log=Logger.getInstance(); 
 	public void addCountry(String countryName,String playerType,int basicPrice) throws Exception {
 		Connection con=null;
 		Statement stmt=null;

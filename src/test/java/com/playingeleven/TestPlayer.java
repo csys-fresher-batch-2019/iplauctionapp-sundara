@@ -11,8 +11,10 @@ import com.playingeleven.dao.dto.Experience;
 import com.playingeleven.dao.impl.PlayersDAOImpl;
 import com.playingeleven.model.Players;
 
-public class TestPlayer {
+import logger.Logger;
 
+public class TestPlayer {
+	private static final Logger log=Logger.getInstance(); 
 	public static void main(String[] args) throws Exception {
 		int n;
 		Scanner sc = new Scanner(System.in);

@@ -5,7 +5,10 @@ import java.util.Scanner;
 import com.playingeleven.dao.impl.CountryDAOImpl;
 import com.playingeleven.model.Country;
 
+import logger.Logger;
+
 public class TestCountry {
+	private static final Logger log=Logger.getInstance(); 
 
 	public static void main(String[] args) throws Exception {
 		insertCountry();

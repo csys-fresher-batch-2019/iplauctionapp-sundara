@@ -15,7 +15,10 @@ import com.playingeleven.dao.PlayersDAO;
 import com.playingeleven.dao.dto.Experience;
 import com.playingeleven.model.Players;
 
+import logger.Logger;
+
 public class PlayersDAOImpl implements PlayersDAO {
+	private static final Logger log=Logger.getInstance(); 
 
 	public void addPlayerDetails(Players player) throws Exception {
 		// TODO Auto-generated method stub

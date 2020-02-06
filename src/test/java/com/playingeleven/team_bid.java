@@ -6,7 +6,10 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
+import logger.Logger;
+
 public class team_bid {
+	private static final Logger log=Logger.getInstance(); 
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

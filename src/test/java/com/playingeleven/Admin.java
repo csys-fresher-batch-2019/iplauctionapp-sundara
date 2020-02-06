@@ -28,8 +28,10 @@ import com.playingeleven.model.Players;
 import com.playingeleven.model.Team;
 import com.playingeleven.model.TeamPlayer;
 
-public class Admin {
+import logger.Logger;
 
+public class Admin {
+	private static final Logger log=Logger.getInstance(); 
 	public static void main(String[] args) throws Exception {
 		int n;
 		Scanner sc = new Scanner(System.in);

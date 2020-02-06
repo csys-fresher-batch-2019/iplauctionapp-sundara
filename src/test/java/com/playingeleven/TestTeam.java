@@ -5,8 +5,10 @@ import java.util.Scanner;
 import com.playingeleven.dao.impl.TeamDAOImpl;
 import com.playingeleven.model.Team;
 
-public class TestTeam {
+import logger.Logger;
 
+public class TestTeam {
+	private static final Logger log=Logger.getInstance(); 
 	public static void main(String[] args) throws Exception {
 		insertTeam();
  }

@@ -3,7 +3,10 @@ package com.playingeleven;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import logger.Logger;
+
 public class DbConnection {
+	private static final Logger log=Logger.getInstance(); 
 
 	public static Connection getConnection() throws Exception {
 

@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import com.playingeleven.DbConnection;
 import com.playingeleven.dao.dto.TeamPlayerPlayers;
 
+import logger.Logger;
+
 public class TeamPlayerDAOImpl {
+	private static final Logger log=Logger.getInstance(); 
 	public void addTeamPlayer(int playrId,int teammId,int soldPrice) throws Exception {
 		Connection con=null;
 		Statement stmt=null;

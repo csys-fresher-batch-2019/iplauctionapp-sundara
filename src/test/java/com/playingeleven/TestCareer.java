@@ -5,8 +5,10 @@ import java.util.Scanner;
 import com.playingeleven.dao.impl.CareerDAOImpl;
 import com.playingeleven.model.Career;
 
-public class TestCareer {
+import logger.Logger;
 
+public class TestCareer {
+	private static final Logger log=Logger.getInstance(); 
 	public static void main(String[] args) throws Exception {
 		testCareer();
 		testDelete();

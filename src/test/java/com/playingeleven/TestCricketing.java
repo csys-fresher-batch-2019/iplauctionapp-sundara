@@ -8,7 +8,10 @@ import com.playingeleven.dao.dto.Bowling;
 import com.playingeleven.dao.impl.CricketingDAOImpl;
 import com.playingeleven.model.Cricketing;
 
+import logger.Logger;
+
 public class TestCricketing {
+	private static final Logger log=Logger.getInstance(); 
 
 	public static void main(String[] args) throws Exception {
 		//testCricketing();

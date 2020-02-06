@@ -1,7 +1,9 @@
 package com.playingeleven.dao.impl;
 
-public class AllDAOImpl {
+import logger.Logger;
 
+public class AllDAOImpl {
+private static final Logger log=Logger.getInstance(); 
 	
 public static boolean exists(String tableName,int id) {
 	boolean exists=false;

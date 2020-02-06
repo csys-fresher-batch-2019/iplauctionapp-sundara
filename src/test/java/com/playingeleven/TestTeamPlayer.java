@@ -2,7 +2,10 @@ package com.playingeleven;
 import java.util.Scanner;
 import com.playingeleven.dao.impl.TeamPlayerDAOImpl;
 import com.playingeleven.model.TeamPlayer;
+
+import logger.Logger;
 public class TestTeamPlayer {
+	private static final Logger log=Logger.getInstance(); 
         public static void main(String[] args) throws Exception {
 		insertTeamPlayer();
 	    }
