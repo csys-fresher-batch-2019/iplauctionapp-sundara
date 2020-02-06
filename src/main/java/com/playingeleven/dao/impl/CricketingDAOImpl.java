@@ -47,64 +47,128 @@ public class CricketingDAOImpl implements CricketingDAO {
 	}
 
 	public void deleteCricketingDetails(int cricNo) throws Exception {
-		Connection con = DbConnection.getConnection();
-		String sql = "DELETE FROM cricketing WHERE cric_no='" + cricNo + "'";
-		//System.out.println(sql);
-		Statement stmt = con.createStatement();
-		int row = stmt.executeUpdate(sql);
-		//System.out.println(row);
-		con.close();
+		Connection con=null;
+		Statement stmt=null;
+		try
+		{
+			con = DbConnection.getConnection();
+			String sql = "DELETE FROM cricketing WHERE cric_no='" + cricNo + "'";
+			//System.out.println(sql);
+			stmt = con.createStatement();
+			int row = stmt.executeUpdate(sql);
+			//System.out.println(row);
+	
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(stmt!=null)
+			{
+				stmt.close();
+			}
+			if(con!=null)
+			{
+				con.close();
+			}
+		}
 
 	}
 
-	public ArrayList<Batting> bestBattingAverage() throws Exception {
-		Connection con = DbConnection.getConnection();
-		String sql = "select * from ( select p.player_fullname as player_fullname,p.role_name as role_name,r.batting as batting,round(BATTING_AVERAGE_CALC(runs_scored, not_outs,innings),2)as batting_average, rank() over (order by round(BATTING_AVERAGE_CALC(runs_scored,not_outs,innings)) desc) as rank from players p, career c,cricketing r where p.player_id = c.career_no and p.player_id=r.cric_no and  (role_name IN( 'batsman' , 'wicketkeeper/Batsman')) and active=1  ) where rank <=2 ";
-		//System.out.println(sql);
-		Statement stmt = con.createStatement();
-		ResultSet rs = stmt.executeQuery(sql);
+	public ArrayList<Batting> bestBattingAverage() throws Exception 
+	{
+		Connection con=null;
+		Statement stmt=null;
 		ArrayList<Batting> Batting = new ArrayList<Batting>();
-		while (rs.next()) {
-			String playerFullName = rs.getString("player_fullname");
-			String roleName = rs.getString("role_name");
-			String batting = rs.getString("batting");
-			int battingAverage = rs.getInt("batting_average");
-			int rank = rs.getInt("rank");
-            com.playingeleven.dao.dto.Batting b = new Batting();
-			b.playerFullName = playerFullName;
-			b.roleName = roleName;
-			b.batting = batting;
-			b.battingAverage = battingAverage;
-			b.rank = rank;
-			Batting.add(b);
+		try
+		{
+			con = DbConnection.getConnection();
+			String sql = "select * from ( select p.player_fullname as player_fullname,p.role_name as role_name,r.batting as batting,round(BATTING_AVERAGE_CALC(runs_scored, not_outs,innings),2)as batting_average, rank() over (order by round(BATTING_AVERAGE_CALC(runs_scored,not_outs,innings)) desc) as rank from players p, career c,cricketing r where p.player_id = c.career_no and p.player_id=r.cric_no and  (role_name IN( 'batsman' , 'wicketkeeper/Batsman')) and active=1  ) where rank <=2 ";
+			//System.out.println(sql);
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				String playerFullName = rs.getString("player_fullname");
+				String roleName = rs.getString("role_name");
+				String batting = rs.getString("batting");
+				int battingAverage = rs.getInt("batting_average");
+				int rank = rs.getInt("rank");
+	            com.playingeleven.dao.dto.Batting b = new Batting();
+				b.playerFullName = playerFullName;
+				b.roleName = roleName;
+				b.batting = batting;
+				b.battingAverage = battingAverage;
+				b.rank = rank;
+				Batting.add(b);
+			}
+			
 		}
-		con.close();
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(stmt!=null)
+			{
+				stmt.close();
+			}
+			if(con!=null)
+			{
+				con.close();
+			}
+		}
+		
+		
 
 		return Batting;
 	}
 
 	public ArrayList<Bowling> bestBowlingAverage() throws Exception {
-		Connection con = DbConnection.getConnection();
-		String sql = "select * from ( select p.player_fullname,p.role_name,r.bowling,r.bowling_speed,round(BOWLING_AVERAGE_CALC (runs_conceded,wickets),2) as bowling_average, rank() over (order by round(BOWLING_AVERAGE_CALC(runs_conceded,wickets)) asc) as rank from players p, career c,cricketing r where p.player_id = c.career_no and p.player_id=r.cric_no and role_name='bowler' and active=1  ) where rank<=2";
-		//System.out.println(sql);
-		Statement stmt = con.createStatement();
-		ResultSet rs = stmt.executeQuery(sql);
+		Connection con=null;
+		Statement stmt=null;
 		ArrayList<Bowling> Bowling = new ArrayList<Bowling>();
-		while (rs.next()) {
-			String playerFullName = rs.getString("player_fullname");
-			String roleName = rs.getString("role_name");
-			String bowling = rs.getString("bowling");
-			int bowlingAverage = rs.getInt("bowling_average");
-			int rank = rs.getInt("rank");
-			com.playingeleven.dao.dto.Bowling bo = new Bowling();
-			bo.playerFullName = playerFullName;
-			bo.roleName = roleName;
-			bo.bowling = bowling;
-			bo.bowlingAverage = bowlingAverage;
-			bo.rank = rank;
-			Bowling.add(bo);
+		try
+		{
+			con = DbConnection.getConnection();
+			String sql = "select * from ( select p.player_fullname,p.role_name,r.bowling,r.bowling_speed,round(BOWLING_AVERAGE_CALC (runs_conceded,wickets),2) as bowling_average, rank() over (order by round(BOWLING_AVERAGE_CALC(runs_conceded,wickets)) asc) as rank from players p, career c,cricketing r where p.player_id = c.career_no and p.player_id=r.cric_no and role_name='bowler' and active=1  ) where rank<=2";
+			//System.out.println(sql);
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				String playerFullName = rs.getString("player_fullname");
+				String roleName = rs.getString("role_name");
+				String bowling = rs.getString("bowling");
+				int bowlingAverage = rs.getInt("bowling_average");
+				int rank = rs.getInt("rank");
+				com.playingeleven.dao.dto.Bowling bo = new Bowling();
+				bo.playerFullName = playerFullName;
+				bo.roleName = roleName;
+				bo.bowling = bowling;
+				bo.bowlingAverage = bowlingAverage;
+				bo.rank = rank;
+				Bowling.add(bo);
+			}
 		}
-		con.close();
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(stmt!=null)
+			{
+				stmt.close();
+			}
+			if(con!=null)
+			{
+				con.close();
+			}
+		}
 		return Bowling;
 	}
 }
