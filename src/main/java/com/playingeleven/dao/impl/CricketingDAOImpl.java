@@ -120,11 +120,7 @@ public class CricketingDAOImpl implements CricketingDAO {
 			{
 				con.close();
 			}
-		}
-		
-		
-
-		return Batting;
+		}		return Batting;
 	}
 
 	public ArrayList<Bowling> bestBowlingAverage() throws Exception {
