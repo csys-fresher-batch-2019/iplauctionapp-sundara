@@ -110,7 +110,7 @@ public class TestPlayer {
 		ArrayList<Experience> ExperiencePlayers = impl.listOfExperiencedPlayers();
 		for (Experience experience : ExperiencePlayers) {
 			System.out.println();
-			System.out.println(experience.playerFullName + "-" + experience.matches);
+			System.out.println(experience.getPlayerFullName() + "-" + experience.getMatches());
 		} 
 
 	}
