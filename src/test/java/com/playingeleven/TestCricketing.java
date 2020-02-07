@@ -61,7 +61,7 @@ public class TestCricketing {
 		impl.bestBowlingAverage();
 		ArrayList<Batting> BattingAverage = impl.bestBattingAverage();
 		for (Batting batting : BattingAverage) {
-			log.getInput();
+			log.getInput("");
 			log.getInput(batting.getPlayerFullName() + "," + batting.getRoleName() + "," + batting.getBatting() + ","
 					+ batting.getBattingAverage() + "," + batting.getRank());
 		}
@@ -74,7 +74,7 @@ public class TestCricketing {
 		impl.bestBowlingAverage();
 		ArrayList<Bowling> BowlingAverage = impl.bestBowlingAverage();
 		for (Bowling bowling : BowlingAverage) {
-			log.getInput();
+			log.getInput("");
 			log.getInput(bowling.getPlayerFullName() + "," + bowling.getRoleName() + "," + bowling.getBowling() + ","
 					+ bowling.getBowlingAverage() + "," + bowling.getRank());
 		}
