@@ -7,7 +7,7 @@ public class Logger {
 	        return log;
 	   }
 	   public void getInput(Object message) {
-		   System.out.println(message);
+		  System.out.println(message);
 		   
 		   
 	   }
@@ -24,6 +24,7 @@ public class Logger {
 	   
 	   public void error(Exception e) {
 		   System.err.println(e.getMessage());
+		   
 		   e.printStackTrace();
 		   
 		   

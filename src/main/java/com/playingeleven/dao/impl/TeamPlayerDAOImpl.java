@@ -22,7 +22,7 @@ public class TeamPlayerDAOImpl {
 			String sql="insert into teamplayer (playr_id,teamm_id,sold_price) values('"+playrId+"','"+teammId+"','"+soldPrice+"')";
 			stmt = con.createStatement();
 			stmt.executeUpdate(sql);
-			//System.out.println(row);
+			//log.getInput(row);
 			
 		}
 		

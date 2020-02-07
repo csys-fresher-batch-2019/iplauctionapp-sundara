@@ -28,7 +28,7 @@ public class PlayersDAOImpl implements PlayersDAO {
 		{
 			con = DbConnection.getConnection();
 			String sql = "INSERT INTO players(player_id,player_fullname,date_of_birth,nick_name,role_name) VALUES (player_id_sq.nextval,?,?,?,?)";
-			//System.out.println(sql);
+			//log.getInput(sql);
 			pst = con.prepareStatement(sql);
 			pst.setString(1, player.getPlayerFullName());
 			pst.setDate(2, Date.valueOf(player.getDateOfBirth()));
@@ -36,7 +36,7 @@ public class PlayersDAOImpl implements PlayersDAO {
 			pst.setString(4, player.getRoleName());
 			//pst.setInt(5,player.getActive());
 			pst.executeUpdate();
-			//System.out.println(rows);
+			//log.getInput(rows);
 		}
 		catch(Exception e)
 		{
@@ -65,11 +65,11 @@ public class PlayersDAOImpl implements PlayersDAO {
 		{
 			con = DbConnection.getConnection();
 			String sql="UPDATE players  SET active=0  WHERE date_of_birth < ?";
-			//System.out.println(sql);
+			//log.getInput(sql);
 			pst = con.prepareStatement(sql);
 			pst.setDate(1, Date.valueOf(dateOfBirth)); 
 			pst.executeUpdate();
-			//System.out.println(rows)
+			//log.getInput(rows)
 			
 		}
 		catch(Exception e)

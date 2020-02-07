@@ -22,15 +22,15 @@ public class TestCricketing {
 
 	public static void testCricketing() throws Exception {
 		Scanner s = new Scanner(System.in);
-		System.out.println("Enter player name");
+		log.getInput("Enter player name");
 		String fullName = s.nextLine();
-		System.out.println("Enter Jersey number");
+		log.getInput("Enter Jersey number");
 		int jerseyNo = s.nextInt();
-		System.out.println("Enter batting");
+		log.getInput("Enter batting");
 		String batting = s.next();
-		System.out.println("Enter bowling");
+		log.getInput("Enter bowling");
 		String bowling = s.next();
-		System.out.println("Enter bowling speed");
+		log.getInput("Enter bowling speed");
 		String bowlingSpeed = s.next();
 		Cricketing ob = new Cricketing();
 		ob.setJerseyNo(jerseyNo);
@@ -44,7 +44,7 @@ public class TestCricketing {
 
 	public static void testDelete() throws Exception {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter cric_no to delete");
+		log.getInput("Enter cric_no to delete");
 		int cricNo = sc.nextInt();
 		Cricketing ob = new Cricketing();
 		ob.setCricNo(cricNo);
@@ -55,27 +55,27 @@ public class TestCricketing {
 	}
 
 	public static void testBatAvg() throws Exception {
-		System.out.println("viewing batting average of players");
+		log.getInput("viewing batting average of players");
 		CricketingDAOImpl impl = new CricketingDAOImpl();
 		// impl.bestBowlingAvg();
 		impl.bestBowlingAverage();
 		ArrayList<Batting> BattingAverage = impl.bestBattingAverage();
 		for (Batting batting : BattingAverage) {
-			System.out.println();
-			System.out.println(batting.getPlayerFullName() + "," + batting.getRoleName() + "," + batting.getBatting() + ","
+			log.getInput();
+			log.getInput(batting.getPlayerFullName() + "," + batting.getRoleName() + "," + batting.getBatting() + ","
 					+ batting.getBattingAverage() + "," + batting.getRank());
 		}
 
 	}
 
 	public static void testBowAvg() throws Exception {
-		System.out.println("viewing bowling average of players");
+		log.getInput("viewing bowling average of players");
 		CricketingDAOImpl impl = new CricketingDAOImpl();
 		impl.bestBowlingAverage();
 		ArrayList<Bowling> BowlingAverage = impl.bestBowlingAverage();
 		for (Bowling bowling : BowlingAverage) {
-			System.out.println();
-			System.out.println(bowling.getPlayerFullName() + "," + bowling.getRoleName() + "," + bowling.getBowling() + ","
+			log.getInput();
+			log.getInput(bowling.getPlayerFullName() + "," + bowling.getRoleName() + "," + bowling.getBowling() + ","
 					+ bowling.getBowlingAverage() + "," + bowling.getRank());
 		}
 	}

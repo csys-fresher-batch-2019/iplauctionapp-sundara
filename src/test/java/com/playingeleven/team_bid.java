@@ -13,11 +13,11 @@ public class team_bid {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter playerId ");
+		log.getInput("Enter playerId ");
 		int playerId = sc.nextInt();
 		int n = 1;
 		int teamId;
-		System.out.println("round no" + n);
+		log.getInput("round no" + n);
         String[] teams = { "CSK", "MI", "RCB", "SRH", "KKR" };
 		int[] teamIds = { 101, 102, 103, 104, 105 };
 		int selectedTeamId = 0;
@@ -30,13 +30,13 @@ public class team_bid {
 			boolean repeat = false;
 			int amount = 0;
 			do {
-				System.out.println(
+				log.getInput(
 						"Team " + teamName + ", Enter the bidding Amount for playerid " + playerId + " at round no" + n);
 				
 				amount = sc.nextInt();
 				if (amountSet.contains(amount)) {
 					repeat = true;
-					System.out.println("Reenter different Amount. Already someone has bidded.");
+					log.getInput("Reenter different Amount. Already someone has bidded.");
 				}
 				else{
 					amountSet.add(amount);
@@ -54,7 +54,7 @@ public class team_bid {
 			}		
 
 		}
-		System.out.println(bid);
+		log.getInput(bid);
 		// int [] numbers = {};
 		int numbers;
 		Set<Integer> keySet = bid.keySet();
@@ -64,7 +64,7 @@ public class team_bid {
 		}
 		// int arr[] = {bid1, bid2,bid3, bid4, bid5};
 		//int max = 0;// bid. Arrays.stream(arr).max().getAsInt();
-		System.out.println("TeamId " + selectedTeamId + ",highest bid is " + max);
+		log.getInput("TeamId " + selectedTeamId + ",highest bid is " + max);
 
 	}
 }

@@ -15,11 +15,11 @@ public class TestCountry {
 		}
 	public static void insertCountry() throws Exception {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Country name");
+		log.getInput("Enter Country name");
 		String countryName = sc.next();
-		System.out.println("Enter Player type(indian,overseas)");
+		log.getInput("Enter Player type(indian,overseas)");
 		String playerType = sc.next();
-		System.out.println("Enter Basic prize of the player");
+		log.getInput("Enter Basic prize of the player");
 		int basicPrice = sc.nextInt();
 	    Country ob = new Country();
 	    ob.setCountryName(countryName);

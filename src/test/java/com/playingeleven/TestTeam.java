@@ -14,13 +14,13 @@ public class TestTeam {
  }
 	public static void insertTeam() throws Exception {
 		Scanner sc = new Scanner(System.in);
-	    System.out.println("Enter Team name");
+	    log.getInput("Enter Team name");
 	    String teamName=sc.next();
-	    System.out.println("Enter Team Name");
+	    log.getInput("Enter Team Name");
 	    String teamOwner= sc.nextLine();
-	    System.out.println("Enter Team Coach");
+	    log.getInput("Enter Team Coach");
 	    String teamCoach= sc.nextLine();
-	    System.out.println("Enter Amount remaining");
+	    log.getInput("Enter Amount remaining");
 	    int amountRemaining=sc.nextInt();
 	    Team ob = new Team();
 	    ob.setTeamName(teamName);

@@ -20,36 +20,36 @@ public class TestPlayer {
 		Scanner sc = new Scanner(System.in);
 
 		do {
-			System.out.print(
+			log.getInput(
 					"\nTo choose your choice\npress 1 add to player details\npress 2 to remove player details\npress 3 to find players by rolename\npress 4 to show player experience\n press any other to exit");
 
-			System.out.println("\nEnter your choice no:");
+			log.getInput("\nEnter your choice no:");
 			n = sc.nextInt();
 			switch (n) {
 			case 1:
-				System.out.println("Add player details");
+				log.getInput("Add player details");
 				testInsert();
 				break;
 			case 2:
-				System.out.println("remove player details");
+				log.getInput("remove player details");
 				testDelete();
 				break;
 			case 3:
-				System.out.println("find players by role name");
+				log.getInput("find players by role name");
 				findRole();
 				break;
 			case 4:
-				System.out.println("show the player experiences");
+				log.getInput("show the player experiences");
 				testExperienced();
 				break;
 			case 5:
-				System.out.println("Exit");
+				log.getInput("Exit");
 				break;
 			case 6:
-				// System.out.println("Saturday");
+				//log.getInput("Saturday");
 				break;
 			default:
-				System.out.println("Invalid choice");
+				log.getInput("Invalid choice");
 				break;
 			}
 		} while (n <= 6);
@@ -57,15 +57,15 @@ public class TestPlayer {
 
 	public static void testInsert() throws Exception {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter player fullname");
+		log.getInput("Enter player fullname");
 		String playerFullName = sc.nextLine();
-		System.out.println("Enter dateofbirth");
+		log.getInput("Enter dateofbirth");
 		String date = sc.next();
 		LocalDate dateOfBirth = LocalDate.parse(date);
 		Date rd = Date.valueOf(dateOfBirth);
-		System.out.println("Enter nickName");
+		log.getInput("Enter nickName");
 		String nickName = sc.next();
-		System.out.println("Enter roleName");
+		log.getInput("Enter roleName");
 		String roleName = sc.next();
 		Players ob = new Players();
 		ob.setPlayerFullName(playerFullName);
@@ -79,7 +79,7 @@ public class TestPlayer {
 
 	public static void testDelete() throws Exception {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter dateofbirth to delete");
+		log.getInput("Enter dateofbirth to delete");
 		String date = sc.next();
 		LocalDate dateOfBirth = LocalDate.parse(date);
 		Date rd = Date.valueOf(dateOfBirth);
@@ -92,7 +92,7 @@ public class TestPlayer {
 
 	public static void findRole() throws Exception {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter role to find players");
+		log.getInput("Enter role to find players");
 		String roleName = sc.next();
 		Players ob = new Players();
 		ob.setRoleName(roleName);
@@ -100,19 +100,19 @@ public class TestPlayer {
 		List<Players> list = new ArrayList<Players>();
 		list = impl.listRoleOfPlayers(roleName);
 		for (Players players : list) {
-			System.out.println(players.getPlayerId() + "-" + players.getPlayerFullName());
+			log.getInput(players.getPlayerId() + "-" + players.getPlayerFullName());
 		}
 		sc.close();
 	}
 
 	public static void testExperienced() throws Exception {
-		System.out.println("viewing experienced players");
+		log.getInput("viewing experienced players");
 		PlayersDAOImpl impl = new PlayersDAOImpl();
 		impl.listOfExperiencedPlayers();
 		ArrayList<Experience> ExperiencePlayers = impl.listOfExperiencedPlayers();
 		for (Experience experience : ExperiencePlayers) {
-			System.out.println();
-			System.out.println(experience.getPlayerFullName() + "-" + experience.getMatches());
+			log.getInput("");
+			log.getInput(experience.getPlayerFullName() + "-" + experience.getMatches());
 		} 
 
 	}

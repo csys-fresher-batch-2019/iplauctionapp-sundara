@@ -17,23 +17,23 @@ public class TestCareer {
 
 	public static void testCareer() throws Exception {
 		Scanner s = new Scanner(System.in);
-		System.out.println("Enter Matches played");
+		log.getInput("Enter Matches played");
 		int matches = s.nextInt();
-		System.out.println("Enter Innings played");
+		log.getInput("Enter Innings played");
 		int innings = s.nextInt();
-		System.out.println("Enter not outs");
+		log.getInput("Enter not outs");
 		int notOuts = s.nextInt();
-		System.out.println("Enter runs scored");
+		log.getInput("Enter runs scored");
 		int runsScored = s.nextInt();
-		System.out.println("Enter balls bowled");
+		log.getInput("Enter balls bowled");
 		int ballsBowled = s.nextInt();
-		System.out.println("Enter runs conceded");
+		log.getInput("Enter runs conceded");
 		int runsConceded = s.nextInt();
-		System.out.println("Enter wickets taken");
+		log.getInput("Enter wickets taken");
 		int wickets = s.nextInt();
-		System.out.println("Enter catches taken");
+		log.getInput("Enter catches taken");
 		int catches = s.nextInt();
-		System.out.println("Enter stumpings");
+		log.getInput("Enter stumpings");
 		int stumpings = s.nextInt();
 		Career ob = new Career();
 		ob.setMatches(matches);
@@ -53,25 +53,25 @@ public class TestCareer {
 
 	public static void updateCareer() throws Exception {
 		Scanner s = new Scanner(System.in);
-		System.out.println("Enter career number");
+		log.getInput("Enter career number");
 		int careerNo = s.nextInt();
-		System.out.println("Enter Matches played");
+		log.getInput("Enter Matches played");
 		int matches = s.nextInt();
-		System.out.println("Enter Innings played");
+		log.getInput("Enter Innings played");
 		int innings = s.nextInt();
-		System.out.println("Enter not outs");
+		log.getInput("Enter not outs");
 		int notOuts = s.nextInt();
-		System.out.println("Enter runs scored");
+		log.getInput("Enter runs scored");
 		int runsScored = s.nextInt();
-		System.out.println("Enter balls bowled");
+		log.getInput("Enter balls bowled");
 		int ballsBowled = s.nextInt();
-		System.out.println("Enter runs conceded");
+		log.getInput("Enter runs conceded");
 		int runsConceded = s.nextInt();
-		System.out.println("Enter wickets taken");
+		log.getInput("Enter wickets taken");
 		int wickets = s.nextInt();
-		System.out.println("Enter catches taken");
+		log.getInput("Enter catches taken");
 		int catches = s.nextInt();
-		System.out.println("Enter stumpings");
+		log.getInput("Enter stumpings");
 		int stumpings = s.nextInt();
 		Career ob = new Career();
 		ob.setCareerNo(careerNo);
@@ -92,7 +92,7 @@ public class TestCareer {
 
 	public static void testDelete() throws Exception {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter career_no to delete");
+		log.getInput("Enter career_no to delete");
 		int careerNo = sc.nextInt();
 		Career ob = new Career();
 		ob.setCareerNo(careerNo);

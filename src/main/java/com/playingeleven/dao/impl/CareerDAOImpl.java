@@ -21,7 +21,7 @@ public class CareerDAOImpl implements CareerDAO {
 			String sql = "insert into career(career_no,matches,innings,not_outs,runs_scored,balls_bowled,runs_conceded,wickets,catches,stumpings) values(career_no_sq.nextval,'"
 					+ matches + "','" + innings + "','" + notOuts + "','" + runsScored + "','" + ballsBowled + "','"
 					+ runsConceded + "','" + wickets + "','" + catches + "','" + stumpings + "')";
-			//System.out.println(sql);
+			//log.getInput(sql);
 			stmt = con.createStatement();
 			int row = stmt.executeUpdate(sql);
 			
@@ -55,10 +55,10 @@ public class CareerDAOImpl implements CareerDAO {
 		{
 			con = DbConnection.getConnection();
 			String sql = "DELETE FROM career WHERE career_no='" + careerNo + "'";
-			//System.out.println(sql);
+			//log.getInput(sql);
 			stmt = con.createStatement();
 			int row = stmt.executeUpdate(sql);
-			//System.out.println(row);
+			//log.getInput(row);
 			
 		}
 		catch(Exception e)
@@ -93,10 +93,10 @@ public class CareerDAOImpl implements CareerDAO {
 					+ ",balls_bowled=balls_bowled+ " + ballsBowled + ",runs_conceded=runs_conceded+ " + runsConceded
 					+ ",wickets=wickets+ " + wickets + ",catches=catches+" + catches + ",stumpings=stumpings+ " + stumpings
 					+ " where career_no=" + careerNo + "";
-			//System.out.println(sql);
+			//log.getInput(sql);
 			stmt = con.createStatement();
 			int row = stmt.executeUpdate(sql);
-			//System.out.println(row);
+			//log.getInput(row);
 
 			
 		}

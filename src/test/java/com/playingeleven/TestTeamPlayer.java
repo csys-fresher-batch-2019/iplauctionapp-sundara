@@ -11,11 +11,11 @@ public class TestTeamPlayer {
 	    }
 		public static void insertTeamPlayer() throws Exception {
 			Scanner sc = new Scanner(System.in);
-		    System.out.println("Enter player id");
+		    log.getInput("Enter player id");
 		    int playrId=sc.nextInt();
-		    System.out.println("Enter team id");
+		    log.getInput("Enter team id");
 		    int teammId=sc.nextInt();
-		    System.out.println("Enter Amount sold");
+		    log.getInput("Enter Amount sold");
 		    int soldPrice=sc.nextInt();
 		    TeamPlayer ob = new TeamPlayer();
 		    ob.setPlayrId(playrId);
