@@ -14,16 +14,16 @@ public class CareerDAOImpl implements CareerDAO {
 
 	public void addCareerDetails(int matches, int innings, int notOuts, int runsScored, int ballsBowled,
 			int runsConceded, int wickets, int catches, int stumpings) throws DbException {
-		Connection con=null;
-		Statement stmt=null;
+		
+		String sql = "insert into career(career_no,matches,innings,not_outs,runs_scored,balls_bowled,runs_conceded,wickets,catches,stumpings) values(career_no_sq.nextval,'"
+				+ matches + "','" + innings + "','" + notOuts + "','" + runsScored + "','" + ballsBowled + "','"
+				+ runsConceded + "','" + wickets + "','" + catches + "','" + stumpings + "')";
+		
+		
 		try
 		{
-			con = DbConnection.getConnection();
-			String sql = "insert into career(career_no,matches,innings,not_outs,runs_scored,balls_bowled,runs_conceded,wickets,catches,stumpings) values(career_no_sq.nextval,'"
-					+ matches + "','" + innings + "','" + notOuts + "','" + runsScored + "','" + ballsBowled + "','"
-					+ runsConceded + "','" + wickets + "','" + catches + "','" + stumpings + "')";
-			//log.getInput(sql);
-			stmt = con.createStatement();
+			Connection 	con = DbConnection.getConnection();
+			Statement	stmt = con.createStatement();
 			stmt.executeUpdate(sql);
 			
 		}
@@ -39,16 +39,13 @@ public class CareerDAOImpl implements CareerDAO {
 
 	public void deleteCareerDetails(int careerNo) throws DbException {
 		
-		Connection con=null;
-		Statement stmt=null;
+
+		String sql = "DELETE FROM career WHERE career_no='" + careerNo + "'";
 		try
 		{
-			con = DbConnection.getConnection();
-			String sql = "DELETE FROM career WHERE career_no='" + careerNo + "'";
-			//log.getInput(sql);
-			stmt = con.createStatement();
+			Connection con = DbConnection.getConnection();
+			Statement stmt = con.createStatement();
 		    stmt.executeUpdate(sql);
-			//log.getInput(row);
 			
 		}
 		catch(Exception e)
@@ -61,18 +58,16 @@ public class CareerDAOImpl implements CareerDAO {
 
 	public void updateCareerDetails(int careerNo, int matches, int innings, int notOuts, int runsScored,
 			int ballsBowled, int runsConceded, int wickets, int catches, int stumpings) throws DbException {
-	
-		Connection con=null;
-		Statement stmt=null;
+
+		String sql = "update career set matches=matches +" + matches + ",innings=innings+" + innings
+				+ ",not_outs=not_outs+" + notOuts + ",runs_scored=runs_scored+ " + runsScored
+				+ ",balls_bowled=balls_bowled+ " + ballsBowled + ",runs_conceded=runs_conceded+ " + runsConceded
+				+ ",wickets=wickets+ " + wickets + ",catches=catches+" + catches + ",stumpings=stumpings+ " + stumpings
+				+ " where career_no=" + careerNo + "";
 		try
 		{
-			con = DbConnection.getConnection();
-			String sql = "update career set matches=matches +" + matches + ",innings=innings+" + innings
-					+ ",not_outs=not_outs+" + notOuts + ",runs_scored=runs_scored+ " + runsScored
-					+ ",balls_bowled=balls_bowled+ " + ballsBowled + ",runs_conceded=runs_conceded+ " + runsConceded
-					+ ",wickets=wickets+ " + wickets + ",catches=catches+" + catches + ",stumpings=stumpings+ " + stumpings
-					+ " where career_no=" + careerNo + "";
-			stmt = con.createStatement();
+			Connection con = DbConnection.getConnection();
+			Statement stmt = con.createStatement();
 			stmt.executeUpdate(sql);
 	}
 		catch(Exception e)

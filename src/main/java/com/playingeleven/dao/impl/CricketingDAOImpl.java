@@ -19,14 +19,12 @@ public class CricketingDAOImpl implements CricketingDAO {
     public void addCricketingDetails(int jerseyNo,String batting, String bowling,
 			String bowlingSpeed) throws DbException 
 	{
-		Connection con=null;
-		Statement stmt=null;
-		try
+		String sql = "insert into cricketing(cric_no,jersey_no,batting,bowling,bowling_speed)values(cric_no_sq.nextval,'" + jerseyNo + "','" + batting + "','" + bowling + "','"+ bowlingSpeed + "')";
+		
+  		try
 		{
-			con = DbConnection.getConnection();
-			String sql = "insert into cricketing(cric_no,jersey_no,batting,bowling,bowling_speed)values(cric_no_sq.nextval,'" + jerseyNo + "','" + batting + "','" + bowling + "','"+ bowlingSpeed + "')";
-			
-			stmt = con.createStatement();
+			Connection	con = DbConnection.getConnection();
+			Statement stmt = con.createStatement();
 			stmt.executeUpdate(sql);
 			
 		}
@@ -37,14 +35,14 @@ public class CricketingDAOImpl implements CricketingDAO {
 	}
 
 	public void deleteCricketingDetails(int cricNo) throws DbException {
-		Connection con=null;
-		Statement stmt=null;
+		
+		String sql = "DELETE FROM cricketing WHERE cric_no='" + cricNo + "'";
+		
 		try
 		{
-			con = DbConnection.getConnection();
-			String sql = "DELETE FROM cricketing WHERE cric_no='" + cricNo + "'";
+			Connection con = DbConnection.getConnection();
 
-			stmt = con.createStatement();
+			Statement 	stmt = con.createStatement();
 			 stmt.executeUpdate(sql);
 	}
 		catch(Exception e)

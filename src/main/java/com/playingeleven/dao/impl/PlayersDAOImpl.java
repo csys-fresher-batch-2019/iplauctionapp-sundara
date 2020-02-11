@@ -22,23 +22,19 @@ public class PlayersDAOImpl implements PlayersDAO {
 	private static final Logger log=Logger.getInstance(); 
 
 	public void addPlayerDetails(Players player) throws DbException {
-		// TODO Auto-generated method stub
-		Connection con=null;
-		PreparedStatement pst=null;
+		String sql = "INSERT INTO players(player_id,player_fullname,date_of_birth,nick_name,role_name) VALUES (player_id_sq.nextval,?,?,?,?)";
+
+	
 		try
 		{
-			con = DbConnection.getConnection();
-			String sql = "INSERT INTO players(player_id,player_fullname,date_of_birth,nick_name,role_name) VALUES (player_id_sq.nextval,?,?,?,?)";
-			//log.getInput(sql);
-			pst = con.prepareStatement(sql);
+			Connection con = DbConnection.getConnection();
+			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setString(1, player.getPlayerFullName());
 			pst.setDate(2, Date.valueOf(player.getDateOfBirth()));
 			pst.setString(3, player.getNickName());
 			pst.setString(4, player.getRoleName());
-			//pst.setInt(5,player.getActive());
 			pst.executeUpdate();
-			//log.getInput(rows);
-		}
+			}
 		catch(Exception e)
 		{
 			log.error(e);
@@ -46,17 +42,16 @@ public class PlayersDAOImpl implements PlayersDAO {
 	}
 
 	public void deletePlayerDetails(LocalDate dateOfBirth) throws DbException {
-		Connection con=null;
-		PreparedStatement pst=null;
+		String sql="UPDATE players  SET active=0  WHERE date_of_birth < ?";
+		
 		try
 		{
-			con = DbConnection.getConnection();
-			String sql="UPDATE players  SET active=0  WHERE date_of_birth < ?";
-			//log.getInput(sql);
-			pst = con.prepareStatement(sql);
+			Connection 		con = DbConnection.getConnection();
+			
+			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setDate(1, Date.valueOf(dateOfBirth)); 
 			pst.executeUpdate();
-			//log.getInput(rows)
+
 			
 		}
 		catch(Exception e)

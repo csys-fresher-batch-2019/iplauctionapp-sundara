@@ -11,15 +11,13 @@ import logger.Logger;
 public class TeamDAOImpl {
 	private static final Logger log=Logger.getInstance(); 
 	public void addTeam(String teamName,String teamOwner,String teamCoach,int amountRemaining) throws DbException {
-		Connection con=null;
-		Statement stmt=null;
+		String sql="insert into team (team_id,team_name,team_owner,team_coach,amount_remaining) values(team_id_sq.nextVal,'"+teamName+"','"+teamOwner+"','"+teamCoach+"','"+amountRemaining+"')";
+
 		try
 		{
-			con = DbConnection.getConnection();
-			String sql="insert into team (team_id,team_name,team_owner,team_coach,amount_remaining) values(team_id_sq.nextVal,'"+teamName+"','"+teamOwner+"','"+teamCoach+"','"+amountRemaining+"')";
-			stmt = con.createStatement();
-			int row = stmt.executeUpdate(sql);
-			//log.getInput(row);
+			Connection con = DbConnection.getConnection();
+						Statement stmt = con.createStatement();
+						stmt.executeUpdate(sql);
 			
 		}
 		catch(Exception e) {

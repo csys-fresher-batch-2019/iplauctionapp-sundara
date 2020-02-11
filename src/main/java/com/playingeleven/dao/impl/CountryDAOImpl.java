@@ -11,14 +11,14 @@ import logger.Logger;
 public class CountryDAOImpl {
 	private static final Logger log=Logger.getInstance(); 
 	public void addCountry(String countryName,String playerType,int basicPrice) throws DbException {
-		Connection con=null;
-		Statement stmt=null;
+		
+		String sql="insert into country (playerr_id,country_name,player_type,basic_price) values(playerr_id_sq.nextVal,'"+countryName+"','"+playerType+"','"+basicPrice+"')";
+
 		try
 		{
-			con = DbConnection.getConnection();
-			String sql="insert into country (playerr_id,country_name,player_type,basic_price) values(playerr_id_sq.nextVal,'"+countryName+"','"+playerType+"','"+basicPrice+"')";
-			stmt = con.createStatement();
-			int row = stmt.executeUpdate(sql);
+			Connection con = DbConnection.getConnection();
+			Statement stmt = con.createStatement();
+			stmt.executeUpdate(sql);
 		}
 		catch(Exception e)
 		{
