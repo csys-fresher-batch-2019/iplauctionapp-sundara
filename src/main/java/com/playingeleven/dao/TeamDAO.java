@@ -1,6 +1,7 @@
 package com.playingeleven.dao;
 
-public interface TeamDAO {
-	public void addTeam(String teamName,String teamOwner,String teamCoach,int amountRemaining) throws Exception;
+import com.playingeleven.DbException;
 
+public interface TeamDAO {
+	public void addTeam(String teamName,String teamOwner,String teamCoach,int amountRemaining) throws DbException;
 }

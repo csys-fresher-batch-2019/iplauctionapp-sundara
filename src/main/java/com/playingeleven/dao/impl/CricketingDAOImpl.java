@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.playingeleven.DbConnection;
+import com.playingeleven.DbException;
 import com.playingeleven.dao.CricketingDAO;
 import com.playingeleven.dao.dto.Batting;
 import com.playingeleven.dao.dto.Bowling;
@@ -15,9 +16,8 @@ import logger.Logger;
 
 public class CricketingDAOImpl implements CricketingDAO {
 	private static final Logger log=Logger.getInstance(); 
-
-	public void addCricketingDetails(int jerseyNo,String batting, String bowling,
-			String bowlingSpeed) throws Exception 
+    public void addCricketingDetails(int jerseyNo,String batting, String bowling,
+			String bowlingSpeed) throws DbException 
 	{
 		Connection con=null;
 		Statement stmt=null;
@@ -34,22 +34,9 @@ public class CricketingDAOImpl implements CricketingDAO {
 		{
 			log.error(e);
 		}
-		finally
-		{
-			if(stmt!=null)
-			{
-				stmt.close();
-			}
-			if(con!=null)
-			{
-				con.close();
-			}
-		}
-		
-
 	}
 
-	public void deleteCricketingDetails(int cricNo) throws Exception {
+	public void deleteCricketingDetails(int cricNo) throws DbException {
 		Connection con=null;
 		Statement stmt=null;
 		try
@@ -59,36 +46,19 @@ public class CricketingDAOImpl implements CricketingDAO {
 
 			stmt = con.createStatement();
 			 stmt.executeUpdate(sql);
-	
-		}
+	}
 		catch(Exception e)
 		{
 			log.error(e);
 		}
-		finally
-		{
-			if(stmt!=null)
-			{
-				stmt.close();
-			}
-			if(con!=null)
-			{
-				con.close();
-			}
-		}
+}
 
-	}
-
-	public ArrayList<Batting> bestBattingAverage() throws Exception 
+	public ArrayList<Batting> bestBattingAverage() throws DbException 
 	{
 		ArrayList<Batting> Batting = new ArrayList<Batting>();
-			
 			String sql = "select * from ( select p.player_fullname as player_fullname,p.role_name as role_name,r.batting as batting,round(BATTING_AVERAGE_CALC(runs_scored, not_outs,innings),2)as batting_average, rank() over (order by round(BATTING_AVERAGE_CALC(runs_scored,not_outs,innings)) desc) as rank from players p, career c,cricketing r where p.player_id = c.career_no and p.player_id=r.cric_no and  (role_name IN( 'batsman' , 'wicketkeeper/Batsman')) and active=1  ) where rank <=2 ";
-		
-			
-			try(Connection con = DbConnection.getConnection();Statement stmt = con.createStatement();ResultSet rs = stmt.executeQuery(sql);){
-
-			while (rs.next()) {
+		try(Connection con = DbConnection.getConnection();Statement stmt = con.createStatement();ResultSet rs = stmt.executeQuery(sql);){
+while (rs.next()) {
 				String playerFullName = rs.getString("player_fullname");
 				String roleName = rs.getString("role_name");
 				String batting = rs.getString("batting");
@@ -103,24 +73,17 @@ public class CricketingDAOImpl implements CricketingDAO {
 				Batting.add(b);
 				return Batting;
 			}
-			
-		}
+			}
 	catch (SQLException e) {
 		log.error(e);
 	}
 			return Batting;
-			
-	}
-
-	public ArrayList<Bowling> bestBowlingAverage() throws Exception {
-		
+			}
+public ArrayList<Bowling> bestBowlingAverage() throws DbException {
 		ArrayList<Bowling> Bowling = new ArrayList<Bowling>();
-		
-			String sql = "select * from ( select p.player_fullname,p.role_name,r.bowling,r.bowling_speed,round(BOWLING_AVERAGE_CALC (runs_conceded,wickets),2) as bowling_average, rank() over (order by round(BOWLING_AVERAGE_CALC(runs_conceded,wickets)) asc) as rank from players p, career c,cricketing r where p.player_id = c.career_no and p.player_id=r.cric_no and role_name='bowler' and active=1  ) where rank<=2";
-			
+		String sql = "select * from ( select p.player_fullname,p.role_name,r.bowling,r.bowling_speed,round(BOWLING_AVERAGE_CALC (runs_conceded,wickets),2) as bowling_average, rank() over (order by round(BOWLING_AVERAGE_CALC(runs_conceded,wickets)) asc) as rank from players p, career c,cricketing r where p.player_id = c.career_no and p.player_id=r.cric_no and role_name='bowler' and active=1  ) where rank<=2";
 			try(Connection con = DbConnection.getConnection();Statement stmt = con.createStatement();ResultSet rs = stmt.executeQuery(sql);){
-			
-			while (rs.next()) {
+				while (rs.next()) {
 				String playerFullName = rs.getString("player_fullname");
 				String roleName = rs.getString("role_name");
 				String bowling = rs.getString("bowling");
@@ -138,7 +101,6 @@ public class CricketingDAOImpl implements CricketingDAO {
 		catch (SQLException e) {
 			log.error(e);
 		}
-		
 		return Bowling;
 	}
 }

@@ -7,13 +7,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.playingeleven.DbConnection;
+import com.playingeleven.DbException;
 import com.playingeleven.dao.dto.TeamPlayerPlayers;
 
 import logger.Logger;
 
 public class TeamPlayerDAOImpl {
 	private static final Logger log=Logger.getInstance(); 
-	public void addTeamPlayer(int playrId,int teammId,int soldPrice) throws Exception {
+	public void addTeamPlayer(int playrId,int teammId,int soldPrice) throws DbException {
 		Connection con=null;
 		Statement stmt=null;
 		try
@@ -23,27 +24,15 @@ public class TeamPlayerDAOImpl {
 			stmt = con.createStatement();
 			stmt.executeUpdate(sql);
 			//log.getInput(row);
-			
-		}
-		
+			}
 		catch(Exception e)
 		{
 			log.error(e);
 		}
-		finally
-		{
-			if(stmt!=null)
-			{
-				stmt.close();
-			}
-			if(con!=null)
-			{
-				con.close();
-			}
-		}
+		
 
 	}
-	public ArrayList<TeamPlayerPlayers> viewTeamPlayer(String teamName) throws Exception {
+	public ArrayList<TeamPlayerPlayers> viewTeamPlayer(String teamName) throws DbException {
 	
 		ArrayList<TeamPlayerPlayers> TeamPlayerPlayers = new ArrayList<TeamPlayerPlayers>();
 		String sql = "select p.player_fullname,p.role_name,o.player_type,tp.sold_price from players p,country o,teamplayer tp,team t where player_id=playerr_id and playr_id=player_id and team_id = teamm_id and team_name='"+teamName+"'";
@@ -61,13 +50,11 @@ public class TeamPlayerDAOImpl {
 				bo.setSoldPrice(soldPrice);
 				TeamPlayerPlayers.add(bo);
 			}
-
-			
 		}
 				
 		catch(SQLException e)
 		{
-			log.error(e);
+		log.error(e);
 		}
 		
 		return TeamPlayerPlayers;

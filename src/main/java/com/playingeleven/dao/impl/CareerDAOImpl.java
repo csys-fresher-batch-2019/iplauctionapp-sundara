@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 import com.playingeleven.DbConnection;
+import com.playingeleven.DbException;
 import com.playingeleven.dao.CareerDAO;
 
 import logger.Logger;
@@ -12,7 +13,7 @@ public class CareerDAOImpl implements CareerDAO {
 	private static final Logger log=Logger.getInstance(); 
 
 	public void addCareerDetails(int matches, int innings, int notOuts, int runsScored, int ballsBowled,
-			int runsConceded, int wickets, int catches, int stumpings) throws Exception {
+			int runsConceded, int wickets, int catches, int stumpings) throws DbException {
 		Connection con=null;
 		Statement stmt=null;
 		try
@@ -23,7 +24,7 @@ public class CareerDAOImpl implements CareerDAO {
 					+ runsConceded + "','" + wickets + "','" + catches + "','" + stumpings + "')";
 			//log.getInput(sql);
 			stmt = con.createStatement();
-			int row = stmt.executeUpdate(sql);
+			stmt.executeUpdate(sql);
 			
 		}
 		catch(Exception e)
@@ -31,23 +32,12 @@ public class CareerDAOImpl implements CareerDAO {
 			
 			log.error(e);
 		}
-		finally
-		{
-			
-			if(stmt!=null)
-			{
-				stmt.close();
-			}
-			if(con!=null)
-			{
-				con.close();
-			}
-		}
+		
 		
 
 	}
 
-	public void deleteCareerDetails(int careerNo) throws Exception {
+	public void deleteCareerDetails(int careerNo) throws DbException {
 		
 		Connection con=null;
 		Statement stmt=null;
@@ -57,7 +47,7 @@ public class CareerDAOImpl implements CareerDAO {
 			String sql = "DELETE FROM career WHERE career_no='" + careerNo + "'";
 			//log.getInput(sql);
 			stmt = con.createStatement();
-			int row = stmt.executeUpdate(sql);
+		    stmt.executeUpdate(sql);
 			//log.getInput(row);
 			
 		}
@@ -65,24 +55,13 @@ public class CareerDAOImpl implements CareerDAO {
 		{
 			log.error(e);
 		}
-		finally
-		{
-			
-			if(stmt!=null)
-			{
-				stmt.close();
-			}
-			if(con!=null)
-			{
-				con.close();
-			}
-		}
+	
 		
 	}
 
 	public void updateCareerDetails(int careerNo, int matches, int innings, int notOuts, int runsScored,
-			int ballsBowled, int runsConceded, int wickets, int catches, int stumpings) throws Exception {
-		// TODO Auto-generated method stub
+			int ballsBowled, int runsConceded, int wickets, int catches, int stumpings) throws DbException {
+	
 		Connection con=null;
 		Statement stmt=null;
 		try
@@ -93,28 +72,12 @@ public class CareerDAOImpl implements CareerDAO {
 					+ ",balls_bowled=balls_bowled+ " + ballsBowled + ",runs_conceded=runs_conceded+ " + runsConceded
 					+ ",wickets=wickets+ " + wickets + ",catches=catches+" + catches + ",stumpings=stumpings+ " + stumpings
 					+ " where career_no=" + careerNo + "";
-			//log.getInput(sql);
 			stmt = con.createStatement();
-			int row = stmt.executeUpdate(sql);
-			//log.getInput(row);
-
-			
-		}
+			stmt.executeUpdate(sql);
+	}
 		catch(Exception e)
 		{
 			log.error(e);
-		}
-		finally
-		{
-			
-			if(stmt!=null)
-			{
-				stmt.close();
-			}
-			if(con!=null)
-			{
-				con.close();
-			}
 		}
 
 	}

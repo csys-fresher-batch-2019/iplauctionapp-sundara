@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.playingeleven.DbConnection;
+import com.playingeleven.DbException;
 import com.playingeleven.dao.PlayersDAO;
 import com.playingeleven.dao.dto.Experience;
 import com.playingeleven.model.Players;
@@ -20,7 +21,7 @@ import logger.Logger;
 public class PlayersDAOImpl implements PlayersDAO {
 	private static final Logger log=Logger.getInstance(); 
 
-	public void addPlayerDetails(Players player) throws Exception {
+	public void addPlayerDetails(Players player) throws DbException {
 		// TODO Auto-generated method stub
 		Connection con=null;
 		PreparedStatement pst=null;
@@ -41,24 +42,10 @@ public class PlayersDAOImpl implements PlayersDAO {
 		catch(Exception e)
 		{
 			log.error(e);
-		}
-	finally
-	{
-		if(pst!=null)
-		{
-			pst.close();
-		}
-		if(con!=null)
-		{
-			con.close();
-		}
-		
-	}
-		
-			
+		}	
 	}
 
-	public void deletePlayerDetails(LocalDate dateOfBirth) throws Exception {
+	public void deletePlayerDetails(LocalDate dateOfBirth) throws DbException {
 		Connection con=null;
 		PreparedStatement pst=null;
 		try
@@ -76,22 +63,9 @@ public class PlayersDAOImpl implements PlayersDAO {
 		{
 			log.error(e);
 		}
-		finally
-		{
-			if(pst!=null)
-			{
-				pst.close();
-			}
-			if(con!=null)
-			{
-				
-			}
-		}
-		
-
 	}
 
-	public List<Players> listRoleOfPlayers(String roleName) throws Exception {
+	public List<Players> listRoleOfPlayers(String roleName) throws DbException {
 	
 		List<Players> list = new ArrayList<Players>();
 		String sql = "select player_id,player_fullname from players where lower(role_name)=lower('" + roleName + "') and active =1";
@@ -118,8 +92,8 @@ public class PlayersDAOImpl implements PlayersDAO {
 		
 	}
 
-	public ArrayList<Experience> listOfExperiencedPlayers() throws Exception {
-		// TODO Auto-generated method stub
+	public ArrayList<Experience> listOfExperiencedPlayers() throws DbException {
+
 	
 		ArrayList<Experience> Experience = new ArrayList<Experience>();
 	

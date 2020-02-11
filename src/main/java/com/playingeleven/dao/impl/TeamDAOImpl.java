@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 import com.playingeleven.DbConnection;
+import com.playingeleven.DbException;
 
 import logger.Logger;
 
 public class TeamDAOImpl {
 	private static final Logger log=Logger.getInstance(); 
-	public void addTeam(String teamName,String teamOwner,String teamCoach,int amountRemaining) throws Exception {
+	public void addTeam(String teamName,String teamOwner,String teamCoach,int amountRemaining) throws DbException {
 		Connection con=null;
 		Statement stmt=null;
 		try
@@ -24,19 +25,6 @@ public class TeamDAOImpl {
 		catch(Exception e) {
 			log.error(e);
 		}
-		finally
-		{
-			if(stmt!=null)
-			{
-				stmt.close();
-			}
-			if(con!=null)
-			{
-				con.close();
-			}
-		}
-		
-
 	}
 
 }

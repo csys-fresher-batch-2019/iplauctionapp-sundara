@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 import com.playingeleven.DbConnection;
+import com.playingeleven.DbException;
 
 import logger.Logger;
 
 public class CountryDAOImpl {
 	private static final Logger log=Logger.getInstance(); 
-	public void addCountry(String countryName,String playerType,int basicPrice) throws Exception {
+	public void addCountry(String countryName,String playerType,int basicPrice) throws DbException {
 		Connection con=null;
 		Statement stmt=null;
 		try
@@ -23,20 +24,5 @@ public class CountryDAOImpl {
 		{
 			log.error(e);
 		}
-		finally
-		{
-			
-			if(stmt!=null)
-			{
-				stmt.close();
-			}
-			if(con!=null)
-			{
-				con.close();
-			}
-		}
-
-	}
-
-
+}
 }
