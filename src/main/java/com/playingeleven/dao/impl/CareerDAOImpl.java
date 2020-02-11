@@ -20,12 +20,9 @@ public class CareerDAOImpl implements CareerDAO {
 				+ runsConceded + "','" + wickets + "','" + catches + "','" + stumpings + "')";
 		
 		
-		try
-		{
-			Connection 	con = DbConnection.getConnection();
-			Statement	stmt = con.createStatement();
-			stmt.executeUpdate(sql);
-			
+		try	(	Connection 	con = DbConnection.getConnection();
+			Statement	stmt = con.createStatement();){
+			stmt.executeUpdate(sql);			
 		}
 		catch(Exception e)
 		{
@@ -42,11 +39,8 @@ public class CareerDAOImpl implements CareerDAO {
 
 		String sql = "DELETE FROM career WHERE career_no='" + careerNo + "'";
 		try
-		{
-			Connection con = DbConnection.getConnection();
-			Statement stmt = con.createStatement();
-		    stmt.executeUpdate(sql);
-			
+		(Connection con = DbConnection.getConnection();	Statement stmt = con.createStatement();)		{	
+			stmt.executeUpdate(sql);
 		}
 		catch(Exception e)
 		{
@@ -65,9 +59,9 @@ public class CareerDAOImpl implements CareerDAO {
 				+ ",wickets=wickets+ " + wickets + ",catches=catches+" + catches + ",stumpings=stumpings+ " + stumpings
 				+ " where career_no=" + careerNo + "";
 		try
-		{
+		(
 			Connection con = DbConnection.getConnection();
-			Statement stmt = con.createStatement();
+			Statement stmt = con.createStatement();){
 			stmt.executeUpdate(sql);
 	}
 		catch(Exception e)

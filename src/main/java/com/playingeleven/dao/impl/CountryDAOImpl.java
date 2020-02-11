@@ -14,10 +14,8 @@ public class CountryDAOImpl {
 		
 		String sql="insert into country (playerr_id,country_name,player_type,basic_price) values(playerr_id_sq.nextVal,'"+countryName+"','"+playerType+"','"+basicPrice+"')";
 
-		try
-		{
-			Connection con = DbConnection.getConnection();
-			Statement stmt = con.createStatement();
+		try(	Connection con = DbConnection.getConnection();
+			Statement stmt = con.createStatement();){
 			stmt.executeUpdate(sql);
 		}
 		catch(Exception e)

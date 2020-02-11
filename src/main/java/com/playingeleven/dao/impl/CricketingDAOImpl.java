@@ -21,10 +21,8 @@ public class CricketingDAOImpl implements CricketingDAO {
 	{
 		String sql = "insert into cricketing(cric_no,jersey_no,batting,bowling,bowling_speed)values(cric_no_sq.nextval,'" + jerseyNo + "','" + batting + "','" + bowling + "','"+ bowlingSpeed + "')";
 		
-  		try
-		{
-			Connection	con = DbConnection.getConnection();
-			Statement stmt = con.createStatement();
+  		try(	Connection	con = DbConnection.getConnection();
+			Statement stmt = con.createStatement();){
 			stmt.executeUpdate(sql);
 			
 		}

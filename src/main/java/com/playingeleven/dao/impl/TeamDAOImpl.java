@@ -14,9 +14,9 @@ public class TeamDAOImpl {
 		String sql="insert into team (team_id,team_name,team_owner,team_coach,amount_remaining) values(team_id_sq.nextVal,'"+teamName+"','"+teamOwner+"','"+teamCoach+"','"+amountRemaining+"')";
 
 		try
-		{
+		(
 			Connection con = DbConnection.getConnection();
-						Statement stmt = con.createStatement();
+						Statement stmt = con.createStatement();){
 						stmt.executeUpdate(sql);
 			
 		}

@@ -25,10 +25,9 @@ public class PlayersDAOImpl implements PlayersDAO {
 		String sql = "INSERT INTO players(player_id,player_fullname,date_of_birth,nick_name,role_name) VALUES (player_id_sq.nextval,?,?,?,?)";
 
 	
-		try
-		{
-			Connection con = DbConnection.getConnection();
-			PreparedStatement pst = con.prepareStatement(sql);
+		try(Connection con = DbConnection.getConnection();
+			PreparedStatement pst = con.prepareStatement(sql);)
+			{
 			pst.setString(1, player.getPlayerFullName());
 			pst.setDate(2, Date.valueOf(player.getDateOfBirth()));
 			pst.setString(3, player.getNickName());
@@ -44,11 +43,9 @@ public class PlayersDAOImpl implements PlayersDAO {
 	public void deletePlayerDetails(LocalDate dateOfBirth) throws DbException {
 		String sql="UPDATE players  SET active=0  WHERE date_of_birth < ?";
 		
-		try
-		{
-			Connection 		con = DbConnection.getConnection();
+		try(	Connection 		con = DbConnection.getConnection();
 			
-			PreparedStatement pst = con.prepareStatement(sql);
+			PreparedStatement pst = con.prepareStatement(sql);){
 			pst.setDate(1, Date.valueOf(dateOfBirth)); 
 			pst.executeUpdate();
 
