@@ -15,15 +15,14 @@ import logger.Logger;
 public class TeamPlayerDAOImpl {
 	private static final Logger log=Logger.getInstance(); 
 	public void addTeamPlayer(int playrId,int teammId,int soldPrice) throws DbException {
-		Connection con=null;
-		Statement stmt=null;
+
+		String sql="insert into teamplayer (playr_id,teamm_id,sold_price) values('"+playrId+"','"+teammId+"','"+soldPrice+"')";
+		
 		try
-		{
-			con= DbConnection.getConnection();
-			String sql="insert into teamplayer (playr_id,teamm_id,sold_price) values('"+playrId+"','"+teammId+"','"+soldPrice+"')";
-			stmt = con.createStatement();
+		(
+				Connection	con= DbConnection.getConnection();
+				Statement	stmt = con.createStatement();){
 			stmt.executeUpdate(sql);
-			//log.getInput(row);
 			}
 		catch(Exception e)
 		{

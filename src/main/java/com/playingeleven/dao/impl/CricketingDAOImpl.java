@@ -36,11 +36,9 @@ public class CricketingDAOImpl implements CricketingDAO {
 		
 		String sql = "DELETE FROM cricketing WHERE cric_no='" + cricNo + "'";
 		
-		try
-		{
-			Connection con = DbConnection.getConnection();
+		try(	Connection con = DbConnection.getConnection();
 
-			Statement 	stmt = con.createStatement();
+			Statement 	stmt = con.createStatement();){
 			 stmt.executeUpdate(sql);
 	}
 		catch(Exception e)

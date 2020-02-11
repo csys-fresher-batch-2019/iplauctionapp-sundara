@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import logger.Logger;
+
 public class DbConnection {
-	//private static final Logger log=Logger.getInstance(); 
+private static final Logger log=Logger.getInstance(); 
 
 	public static Connection getConnection() throws SQLException {
 
@@ -15,7 +17,7 @@ public class DbConnection {
 		 Class.forName("oracle.jdbc.driver.OracleDriver");
 		 String url = "jdbc:oracle:thin:@" + server + ":1521:XE";
 		 connection = DriverManager.getConnection(url, "system", "asdf12fdsa");
-		 System.out.println(connection);
+		 log.getInput(connection);
 		 } catch (ClassNotFoundException e) {
 		 throw new RuntimeException("Driver class not found");
 		 } catch (SQLException e) {
