@@ -280,8 +280,9 @@ public class Admin {
 		log.getInput("viewing batting average of players");
 		CricketingDAOImpl impl = new CricketingDAOImpl();
 		// impl.bestBowlingAvg();
-		impl.bestBowlingAverage();
+		impl.bestBattingAverage();
 		ArrayList<Batting> BattingAverage = impl.bestBattingAverage();
+		log.getInput(BattingAverage);
 		for (Batting batting : BattingAverage) {
 			log.getInput("");
 			log.getInput(batting.getPlayerFullName() + "," + batting.getRoleName() + "," + batting.getBatting() + ","

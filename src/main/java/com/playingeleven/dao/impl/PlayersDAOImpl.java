@@ -48,8 +48,6 @@ public class PlayersDAOImpl implements PlayersDAO {
 			PreparedStatement pst = con.prepareStatement(sql);){
 			pst.setDate(1, Date.valueOf(dateOfBirth)); 
 			pst.executeUpdate();
-
-			
 		}
 		catch(Exception e)
 		{
@@ -65,8 +63,6 @@ public class PlayersDAOImpl implements PlayersDAO {
 		(
 			Connection con = DbConnection.getConnection();
 			Statement stmt = con.createStatement();
-			
-			
 			ResultSet rs = stmt.executeQuery(sql);){
 			while (rs.next()) {
 				Players p = new Players();

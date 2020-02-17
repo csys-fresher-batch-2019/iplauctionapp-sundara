@@ -26,7 +26,4 @@ public class TeamPlayer {
 	public void setSoldPrice(int soldPrice) {
 		this.soldPrice = soldPrice;
 	}
-	
-	
-
 }

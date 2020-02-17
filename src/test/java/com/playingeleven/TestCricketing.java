@@ -16,7 +16,7 @@ public class TestCricketing {
 	public static void main(String[] args) throws Exception {
 		//testCricketing();
 		//testDelete();
-		//testBatAvg();
+		testBatAvg();
 		//testBowAvg();
 	}
 
@@ -58,7 +58,7 @@ public class TestCricketing {
 		log.getInput("viewing batting average of players");
 		CricketingDAOImpl impl = new CricketingDAOImpl();
 		// impl.bestBowlingAvg();
-		impl.bestBowlingAverage();
+		impl.bestBattingAverage();
 		ArrayList<Batting> BattingAverage = impl.bestBattingAverage();
 		for (Batting batting : BattingAverage) {
 			log.getInput("");

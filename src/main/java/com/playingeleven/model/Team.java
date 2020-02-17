@@ -1,5 +1,4 @@
 package com.playingeleven.model;
-
 public class Team {
 	private int teamId;
 	private String teamName;
@@ -41,6 +40,4 @@ public class Team {
 	public void setAmountRemaining(int amountRemaining) {
 		this.amountRemaining = amountRemaining;
 	}
-	
-
-}
+	}
