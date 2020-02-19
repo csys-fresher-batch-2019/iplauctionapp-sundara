@@ -7,7 +7,18 @@ public class Bowling {
 	private String bowling;
 	private int bowlingAverage;
 	private int rank;
+	private String playerImage;
 	
+
+	public String getPlayerImage() {
+		return playerImage;
+	}
+
+
+	public void setPlayerImage(String playerImage) {
+		this.playerImage = playerImage;
+	}
+
 
 	public String getPlayerFullName() {
 		return playerFullName;
@@ -62,7 +73,7 @@ public class Bowling {
 	@Override
 	public String toString() {
 		return "Bowling [playerFullName=" + playerFullName + ", roleName=" + roleName + ", bowling=" + bowling
-				+ ", bowlingAverage=" + bowlingAverage + ", rank=" + rank + "]";
+				+ ", bowlingAverage=" + bowlingAverage + ", rank=" + rank + ", playerImage=" + playerImage + "]";
 	}
 
 }

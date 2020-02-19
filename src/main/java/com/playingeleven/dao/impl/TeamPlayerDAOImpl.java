@@ -34,15 +34,17 @@ public class TeamPlayerDAOImpl {
 	public ArrayList<TeamPlayerPlayers> viewTeamPlayer(String teamName) throws DbException {
 	
 		ArrayList<TeamPlayerPlayers> TeamPlayerPlayers = new ArrayList<TeamPlayerPlayers>();
-		String sql = "select p.player_fullname,p.role_name,o.player_type,tp.sold_price from players p,country o,teamplayer tp,team t where player_id=playerr_id and playr_id=player_id and team_id = teamm_id and team_name='"+teamName+"'";
+		String sql = "select p.player_image,p.player_fullname,p.role_name,o.player_type,tp.sold_price from players p,country o,teamplayer tp,team t where player_id=playerr_id and playr_id=player_id and team_id = teamm_id and team_name='"+teamName+"'";
 		try
 		(Connection con=DbConnection.getConnection();Statement stmt=con.createStatement();ResultSet rs = stmt.executeQuery(sql);){
 		while (rs.next()) {
+			String playerImage= rs.getString("player_image");
 				String playerFullName = rs.getString("player_fullname");
 				String roleName = rs.getString("role_name");
 				String playerType=rs.getString("player_Type");
 				int soldPrice = rs.getInt("sold_price");
 				com.playingeleven.dao.dto.TeamPlayerPlayers bo = new TeamPlayerPlayers();
+				bo.setPlayerImage(playerImage);
 				bo.setPlayerFullName(playerFullName);
 				bo.setRoleName(roleName);
 				bo.setPlayerType(playerType);

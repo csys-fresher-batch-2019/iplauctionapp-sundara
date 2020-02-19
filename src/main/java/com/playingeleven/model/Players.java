@@ -8,6 +8,15 @@ public class Players {
 	private LocalDate dateOfBirth;
 	private String nickName;
 	private String roleName;
+	private String playerImage;
+	public String getPlayerImage() {
+		return playerImage;
+	}
+
+	public void setPlayerImage(String playerImage) {
+		this.playerImage = playerImage;
+	}
+
 	private int active=1;
 	
 	public void setId(int playerId)

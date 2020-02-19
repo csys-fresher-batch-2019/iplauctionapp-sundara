@@ -67,11 +67,14 @@ public class TestPlayer {
 		String nickName = sc.next();
 		log.getInput("Enter roleName");
 		String roleName = sc.next();
+		log.getInput("Enter playerImage");
+		String playerImage = sc.next();
 		Players ob = new Players();
 		ob.setPlayerFullName(playerFullName);
 		ob.setDateOfBirth(dateOfBirth);
 		ob.setNickName(nickName);
 		ob.setRoleName(roleName);
+		ob.setPlayerImage(playerImage);
 		PlayersDAOImpl impl = new PlayersDAOImpl();
 		impl.addPlayerDetails(ob);
 		sc.close();

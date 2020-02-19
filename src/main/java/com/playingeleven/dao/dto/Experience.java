@@ -4,8 +4,21 @@ public class Experience {
 
 	private String playerFullName;
 	private int matches;
+	private String playerImage;
 	
 	
+
+	public String getPlayerImage() {
+		return playerImage;
+	}
+
+
+
+	public void setPlayerImage(String playerImage) {
+		this.playerImage = playerImage;
+	}
+
+
 
 	public String getPlayerFullName() {
 		return playerFullName;
@@ -33,6 +46,7 @@ public class Experience {
 
 	@Override
 	public String toString() {
-		return "Experience [playerFullName=" + playerFullName + "| matches=" + matches + "]";
+		return "Experience [playerFullName=" + playerFullName + ", matches=" + matches + ", playerImage=" + playerImage
+				+ "]";
 	}
 }
